@@ -1,0 +1,85 @@
+@page
+@model HeroesWeb.Pages.Laboratorio.InscripcionModel
+@{
+    ViewData["Title"] = "Inscripción a una misión";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p>Complete los datos del héroe. Esta actividad no guarda registros.</p>
+
+@if (Model.Confirmacion is not null)
+{
+    <div class="alert alert-success" role="status">
+        @Model.Confirmacion
+    </div>
+}
+
+<form method="post" asp-page="/Laboratorio/Inscripcion"
+      asp-page-handler="Inscribir">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Inscripcion.Nombre" class="form-label"></label>
+        <input asp-for="Inscripcion.Nombre" class="form-control" />
+        <span asp-validation-for="Inscripcion.Nombre"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Inscripcion.Email" class="form-label"></label>
+        <input asp-for="Inscripcion.Email" class="form-control" />
+        <span asp-validation-for="Inscripcion.Email"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Inscripcion.Ciudad" class="form-label"></label>
+        <select asp-for="Inscripcion.Ciudad" asp-items="Model.Ciudades"
+                class="form-select">
+            <option value="">-- Seleccione una ciudad --</option>
+        </select>
+        <span asp-validation-for="Inscripcion.Ciudad"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Inscripcion.MisionId" class="form-label"></label>
+        <select asp-for="Inscripcion.MisionId" asp-items="Model.Misiones"
+                class="form-select">
+            <option value="">-- Seleccione una misión --</option>
+        </select>
+        <span asp-validation-for="Inscripcion.MisionId"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Inscripcion.Integrantes" class="form-label"></label>
+        <input asp-for="Inscripcion.Integrantes" class="form-control" type="number" />
+        <span asp-validation-for="Inscripcion.Integrantes"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Inscripcion.Observaciones" class="form-label"></label>
+        <textarea asp-for="Inscripcion.Observaciones" rows="3"
+                  class="form-control"></textarea>
+        <span asp-validation-for="Inscripcion.Observaciones"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Validar inscripción</button>
+    <a asp-page="/Laboratorio/Inscripcion"
+       class="btn btn-outline-secondary">Nueva inscripción</a>
+    <a asp-page="/Index" class="btn btn-secondary">Volver al inicio</a>
+</form>
+
+<hr />
+<h2>Inscripción rápida</h2>
+<a asp-page="/Laboratorio/Inscripcion" asp-route-misionId="1">
+    Preparar inscripción a Rescate de civiles
+</a>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
