@@ -1,0 +1,29 @@
+@model EntradasMvc.Models.Cotizacion
+@{
+    ViewData["Title"] = "Cotizar entradas";
+}
+
+<h1>Cotizar entradas</h1>
+<p>Cada entrada cuesta Bs 50. Desde 5 entradas: 10 % de descuento.</p>
+
+<form asp-controller="Entradas" asp-action="Calcular" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Cliente" class="form-label"></label>
+        <input asp-for="Cliente" class="form-control" />
+        <span asp-validation-for="Cliente" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Cantidad" class="form-label"></label>
+        <input asp-for="Cantidad" class="form-control" />
+        <span asp-validation-for="Cantidad" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Calcular</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
