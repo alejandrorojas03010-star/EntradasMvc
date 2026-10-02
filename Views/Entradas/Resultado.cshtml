@@ -1,25 +1,61 @@
-@model EntradasMvc.Models.Cotizacion
+@model EntradasMvc.ViewModels.ResultadoCotizacionViewModel
 @{
     ViewData["Title"] = "Resultado de la cotización";
 }
 
-<h1>Resultado de la cotización</h1>
-<p>Cliente: <strong>@Model.Cliente</strong></p>
+<h1>@Model.Evento</h1>
+
+<p>
+    Fecha:
+    <strong>@Model.FechaEvento.ToString("dd/MM/yyyy")</strong>
+</p>
+
+<p>
+    Cliente:
+    <strong>@Model.Cotizacion.Cliente</strong>
+</p>
 
 <table class="table table-bordered">
     <thead>
-        <tr><th>Concepto</th><th>Valor</th></tr>
+        <tr>
+            <th>Concepto</th>
+            <th>Valor</th>
+        </tr>
     </thead>
     <tbody>
-        <tr><td>Cantidad de entradas</td><td>@Model.Cantidad</td></tr>
-        <tr><td>Precio unitario</td><td>Bs @Model.PrecioUnitario.ToString("F2")</td></tr>
-        <tr><td>Subtotal</td><td>Bs @Model.Subtotal.ToString("F2")</td></tr>
-        <tr><td>Descuento</td><td>Bs @Model.Descuento.ToString("F2")</td></tr>
-        <tr><th>Total</th><td><strong>Bs @Model.Total.ToString("F2")</strong></td></tr>
+        <tr>
+            <td>Cantidad de entradas</td>
+            <td>@Model.Cotizacion.Cantidad</td>
+        </tr>
+        <tr>
+            <td>Precio unitario</td>
+            <td>Bs @Model.Cotizacion.PrecioUnitario.ToString("F2")</td>
+        </tr>
+        <tr>
+            <td>Subtotal</td>
+            <td>Bs @Model.Cotizacion.Subtotal.ToString("F2")</td>
+        </tr>
+        <tr>
+            <td>Descuento</td>
+            <td>Bs @Model.Cotizacion.Descuento.ToString("F2")</td>
+        </tr>
+        <tr>
+            <th>Total</th>
+            <td>
+                <strong>
+                    Bs @Model.Cotizacion.Total.ToString("F2")
+                </strong>
+            </td>
+        </tr>
     </tbody>
 </table>
 
-<p>Esta cotización no registra una compra.</p>
-<a asp-controller="Entradas" asp-action="Index" class="btn btn-primary">
+<div class="alert alert-success">
+    @Model.Mensaje
+</div>
+
+<a asp-controller="Entradas"
+   asp-action="Index"
+   class="btn btn-primary">
     Nueva cotización
 </a>
