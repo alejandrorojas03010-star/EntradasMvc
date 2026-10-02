@@ -25,7 +25,8 @@ public class EntradasController : Controller
         var cotizacion = new Cotizacion
         {
             Cliente = viewModel.Cliente,
-            Cantidad = viewModel.Cantidad
+            Cantidad = viewModel.Cantidad,
+            TipoEntrada = viewModel.TipoEntrada
         };
 
         var resultadoViewModel = new ResultadoCotizacionViewModel

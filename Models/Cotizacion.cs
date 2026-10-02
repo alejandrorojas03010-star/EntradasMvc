@@ -6,6 +6,8 @@ public class Cotizacion
 
     public int Cantidad { get; set; }
 
+    public string TipoEntrada { get; set; } = string.Empty;
+
     public decimal PrecioUnitario => 50m;
 
     public decimal Subtotal => Cantidad * PrecioUnitario;

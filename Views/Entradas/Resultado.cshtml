@@ -7,12 +7,17 @@
 
 <p>
     Fecha:
-    <strong>@Model.FechaEvento.ToString("dd/MM/yyyy")</strong>
+    <strong>@Model.FechaEvento.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)</strong>
 </p>
 
 <p>
     Cliente:
     <strong>@Model.Cotizacion.Cliente</strong>
+</p>
+
+<p>
+    Tipo de entrada:
+    <strong>@Model.Cotizacion.TipoEntrada</strong>
 </p>
 
 <table class="table table-bordered">

@@ -14,4 +14,8 @@ public class CotizacionInputViewModel
         ErrorMessage = "La cantidad debe estar entre 1 y 10.")]
     [Display(Name = "Cantidad de entradas")]
     public int Cantidad { get; set; } = 1;
+
+    [Required(ErrorMessage = "Seleccione el tipo de entrada.")]
+    [Display(Name = "Tipo de entrada")]
+    public string TipoEntrada { get; set; } = string.Empty;
 }
