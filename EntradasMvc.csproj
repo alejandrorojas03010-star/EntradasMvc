@@ -4,6 +4,8 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <!-- HeroesWeb es otro proyecto del repositorio: no se compila como parte de EntradasMvc -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);HeroesWeb/**</DefaultItemExcludes>
   </PropertyGroup>
 
 </Project>
